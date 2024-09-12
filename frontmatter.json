@@ -49,10 +49,18 @@
   "frontMatter.framework.id": "hugo",
   "frontMatter.content.publicFolder": "static",
   "frontMatter.preview.host": "http://localhost:1313",
+
   "frontMatter.content.pageFolders": [
     {
-      "title": "content",
-      "path": "[[workspace]]/F:/Projects/Code/devspace/content"
+      "title": "root",
+      "path": "[[workspace]]/content",
+      "excludeSubdir": true
+    },
+    {
+      "title": "Blog posts",
+      "path": "[[workspace]]/content/posts",
+      "previewPath": "/posts",
+      "trailingSlash": false
     }
   ],
   "frontMatter.git.enabled": true
