@@ -1,1 +1,9 @@
-{}
+{
+    "projects": {
+        "code": {
+            "devspace": {
+                "assets": {}
+            }
+        }
+    }
+}
