@@ -15,7 +15,7 @@ categories:
 slug: building-blog-site
 ---
 
-# Building a blog & profile site - How hard can it be?
+# Building a blog & profile site - How hard can it be? (1/2)
 
 Well, if you found your self in the same pickle as I have _Lets build a blog site!_, you might have found your self in the same shoe as I have:
 What technology should I use to do so... How should it look like... Djees this is not easy!
@@ -88,3 +88,7 @@ Hugo is a SSG (Static Site Generation) CLI tool build using Go with markdown as 
 Ideal if you are familiar with markdown (and like in my case, like to write markdown) powered by the known Go Templating engine.
 
 If you realy feel up for the challenge (and know Go), you can even write modules for it to control the process of building the content!
+And it is realy fast, has great documentation and even has support to deploy to an Azure Storage Account! Incredible!
+
+In part 2 I will dive a bit deeper in the setup of my site, the tools that I used and dive a bit deeper into how theming works.
+Stay tuned and don't forget to C# too!
