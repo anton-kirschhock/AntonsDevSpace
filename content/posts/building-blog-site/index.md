@@ -3,7 +3,7 @@ title: Building a blog & profile site - How hard can it be?
 description: Building a Blog site sometimes can be challenging! Let's dive into my process of building a profile and blog site!
 date: 2024-09-10T08:26:12.907Z
 preview: ""
-draft: true
+draft: false
 tags:
   - Blog site
   - Blogging
@@ -13,6 +13,10 @@ tags:
 categories:
   - Blogging
 slug: building-blog-site
+cover:
+  image: "building-blog.png"
+  caption: "A person building a blogsite - this is an AI generated image"
+ShowToc: true
 ---
 
 # Building a blog & profile site - How hard can it be? (1/2)

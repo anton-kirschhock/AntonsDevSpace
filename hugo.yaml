@@ -2,3 +2,10 @@ baseURL: https://www.kirschhock.com/
 languageCode: en-us
 title: "Anton's Dev Space"
 theme: ["PaperMod"]
+
+Menus:
+  main:
+    - URL: "/"
+      Name: "Home"
+    - URL: "/posts"
+      Name: "Posts"
