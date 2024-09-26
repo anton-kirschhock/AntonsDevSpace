@@ -8,9 +8,11 @@
         if(isDark){
             document.querySelector("html").classList.remove(LIGHT_THEME_KEY);
             document.querySelector("html").classList.add(DARK_THEME_KEY);
+            localStorage.setItem("pref-theme", "dark");
         }else{
             document.querySelector("html").classList.remove(DARK_THEME_KEY);
             document.querySelector("html").classList.add(LIGHT_THEME_KEY);
+            localStorage.setItem("pref-theme", "light");
         }
     }
 </script>

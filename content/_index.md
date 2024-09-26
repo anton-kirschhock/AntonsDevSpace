@@ -7,13 +7,11 @@ cascade:
 slug: anton-dev-space
 ---
 
-Welcome to my blog with some of my work in progress. I've been working on this book idea. You can read some of the chapters below.
+Hi there!
 
-{{< flex-row >}}
-{{< column >}}
-Column 1
-{{< /column >}}
-{{< column >}}
-Column 2
-{{< /column >}}
-{{< /flex-row >}}
+My name is Anton, Just another guy on the internet who writes about development.
+
+I focus on various topics, such as: .Net, Azure, Angular, React, AI,....
+
+Do also note that this page is still work in progress, but I wanted to put something out there already.
+Meanwhile, I hope you enjoy!

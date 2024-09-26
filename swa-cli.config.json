@@ -1,0 +1,12 @@
+{
+  "$schema": "https://aka.ms/azure/static-web-apps-cli/schema",
+  "configurations": {
+    "devspace": {
+      "appLocation": "public",
+      "outputLocation": "public",
+      "appBuildCommand": "hugo",
+      "run": "hugo server",
+      "appDevserverUrl": "localhost:1313"
+    }
+  }
+}

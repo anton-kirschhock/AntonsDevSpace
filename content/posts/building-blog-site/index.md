@@ -94,5 +94,5 @@ Ideal if you are familiar with markdown (and like in my case, like to write mark
 If you realy feel up for the challenge (and know Go), you can even write modules for it to control the process of building the content!
 And it is realy fast, has great documentation and even has support to deploy to an Azure Storage Account! Incredible!
 
-In part 2 I will dive a bit deeper in the setup of my site, the tools that I used and dive a bit deeper into how theming works.
+In part 2 I will dive a bit deeper in the setup, the tools that I used and dive a bit deeper into how theming works.
 Stay tuned and don't forget to C# too!
