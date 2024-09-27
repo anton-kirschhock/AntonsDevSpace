@@ -61,10 +61,9 @@ And so I went ahead building my Portfolio / Blog site using Piranha.
 BUT I wanted something new, not the default Bootstrap or Tailwind CSS site so I found something cool: [Bulma](https://bulma.io/).
 
 Bulma is everything I was searching for in a simple CSS + HTML component library. It even looked very nice!
-// Image of Bulma's site
-
-So I started tinkering and built a portfolio site with it
-// IMAGE OF THE SITE
+![Bulma website](image.png)
+So I started tinkering and built a portfolio site with it:
+![alt text](image-1.png)
 
 I even got it up and running with a VM in Azure but realized the biggest issue for mankind: Money.
 The VM would have cost 20 Euros per month - I needed a cheaper solution, so again ditched a project (while being production ready) and went back to the drawing board.

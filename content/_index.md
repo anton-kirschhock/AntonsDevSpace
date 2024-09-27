@@ -1,5 +1,5 @@
 ---
-title: Anton's Dev Space
+title:
 description: Do you C# Too?
 theme_version: 2.8.2
 cascade:
@@ -7,7 +7,7 @@ cascade:
 slug: anton-dev-space
 ---
 
-Hi there!
+{{< section-title title="Hi there 👋" >}}
 
 My name is Anton, Just another guy on the internet who writes about development.
 

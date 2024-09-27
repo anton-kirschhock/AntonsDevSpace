@@ -35,44 +35,27 @@ setThemeToDark(localStorage.getItem("pref-theme") === "dark" || window.matchMedi
 {{- /* theme-toggle is disabled and theme is auto */}}
 {{- else if (and (ne site.Params.defaultTheme "light") (ne site.Params.defaultTheme "dark"))}}
 <script>
-    setThemeToDark(false);
-
+    setThemeToDark(false);      
 </script>
 {{- end }}
 
 <nav class="navbar" role="navigation" aria-label="main navigation">
+
+      
     <div class="navbar-brand">
-        {{- $label_text := (site.Params.label.text | default site.Title) }}
-        {{- if site.Title }}
-        <a href="{{ "" | absLangURL }}" accesskey="h" title="{{ $label_text }} (Alt + H)" class="navbar-item">
-            {{- if site.Params.label.icon }}
-            {{- $img := resources.Get site.Params.label.icon }}
-            {{- if $img }}
-                {{- $processableFormats := (slice "jpg" "jpeg" "png" "tif" "bmp" "gif") -}}
-                {{- if hugo.IsExtended -}}
-                    {{- $processableFormats = $processableFormats | append "webp" -}}
-                {{- end -}}
-                {{- $prod := (hugo.IsProduction | or (eq site.Params.env "production")) }}
-                {{- if and (in $processableFormats $img.MediaType.SubType) (eq $prod true)}}
-                    {{- if site.Params.label.iconHeight }}
-                        {{- $img = $img.Resize (printf "x%d" site.Params.label.iconHeight) }}
-                    {{ else }}
-                        {{- $img = $img.Resize "x30" }}
-                    {{- end }}
-                {{- end }}
-                <img src="{{ $img.Permalink }}" alt="" aria-label="logo"
-                    height="{{- site.Params.label.iconHeight | default "30" -}}">
-            {{- else }}
-            <img src="{{- site.Params.label.icon | absURL -}}" alt="" aria-label="logo"
-                height="{{- site.Params.label.iconHeight | default "30" -}}">
-            {{- end -}}
-            {{- else if hasPrefix site.Params.label.iconSVG "<svg" }}
-                {{ site.Params.label.iconSVG | safeHTML }}
-            {{- end -}}
-            {{- $label_text -}}
+
+          
+        <a href="{{ "" | absLangURL }}" accesskey="h" title="Anton's Dev space (Alt + H)" class="navbar-item is-size-3">
+            Anton's Dev Space
         </a>
-        {{- end }}
-        <div class="navbar-menu">
+        <button role="button" class="navbar-burger is-black" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </button>
+          </div>
+        <div class="navbar-menu" id="navMenu">
             {{- $currentPage := . }}
             <div id="menu" class="navbar-start">
                 {{- range site.Menus.main }}
@@ -121,7 +104,6 @@ setThemeToDark(localStorage.getItem("pref-theme") === "dark" || window.matchMedi
             </button>
         </div>
         {{- end }}
-        </div>
     </div>
     {{- $currentPage := . }}
     
@@ -132,6 +114,22 @@ setThemeToDark(localStorage.getItem("pref-theme") === "dark" || window.matchMedi
     document.getElementById("theme-toggle").addEventListener("click", () => {
         setThemeToDark(document.querySelector("html").classList.contains(LIGHT_THEME_KEY));
     });
+
+            // Add a click event on each of them
+            const el = document.querySelector(".navbar-burger");
+            el.addEventListener('click', () => {
+      
+            const $target = document.getElementById("navMenu");
+      
+            // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+            if(el.classList.contains('is-active')){
+                el.classList.remove('is-active');
+                $target.classList.remove('is-active');                
+            }else{
+                el.classList.add('is-active');
+                $target.classList.add('is-active');
+            }      
+          });
 
 </script>
 
