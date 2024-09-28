@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /drafts/
+Disallow: /private/
+
+Sitemap: https://www.kirschhock.com/sitemap.xml

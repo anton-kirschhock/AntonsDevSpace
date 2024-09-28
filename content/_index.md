@@ -7,6 +7,7 @@ cascade:
 slug: anton-dev-space
 ---
 
+{{< hero title="Anton's Dev space" subtitle="Do you C# too?">}}
 {{< section-title title="Hi there 👋" >}}
 
 My name is Anton, Just another guy on the internet who writes about development.

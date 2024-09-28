@@ -1,0 +1,14 @@
+{{ $title := .Get "title" }} {{ $subtitle := .Get "subtitle" }} {{ $color :=
+.Get "color" }} {{ $bgImage := .Get "bgImage" }}
+
+<section
+  class="hero is-{{ $color }} {{ if $bgImage }}is-bold{{ end }}"
+  style="{{ if $bgImage }}background-image: url('{{ $bgImage }}'); background-size: cover; background-position: center;{{ end }}"
+>
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title">{{ $title }}</h1>
+      <h2 class="subtitle">{{ $subtitle }}</h2>
+    </div>
+  </div>
+</section>

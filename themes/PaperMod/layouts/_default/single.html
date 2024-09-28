@@ -46,11 +46,13 @@
 
   <footer class="post-footer">
     {{- $tags := .Language.Params.Taxonomies.tag | default "tags" }}
-    <ul class="post-tags">
+    <div class="box is-centered">
+      <div class="tags are-medium is-centered">
       {{- range ($.GetTerms $tags) }}
-      <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
+      <a href="{{ .Permalink }}" class="tag is-info">{{ .LinkTitle }}</a>
       {{- end }}
-    </ul>
+      </div>
+    </div>
     {{- if (.Param "ShowPostNavLinks") }} {{- partial "post_nav_links.html" . }}
     {{- end }} {{- if (and site.Params.ShowShareButtons (ne .Params.disableShare
     true)) }} {{- partial "share_icons.html" . -}} {{- end }}
