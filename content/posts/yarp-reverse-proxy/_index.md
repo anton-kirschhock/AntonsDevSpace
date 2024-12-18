@@ -1,9 +1,9 @@
 ---
 title: YARP - The perfect reverse proxy?
 description: Can it be? A perfect reverse proxy? Lets see!
-date: 2024-11-10T18:08:47.762Z
+date: 2024-12-19T06:08:00Z
 preview: ""
-draft: true
+draft: false
 tags:
   - .Net
   - dotnet
@@ -30,11 +30,11 @@ Assume we have two (frontend) apps that are hosted under the same domain, let's 
 App one can be found under - let's say `mydomain.app/app1`, and app two can be found at `mydomain.app/app2`.
 Lastly, if you don't type in any other valid path, it should redirect to app1.
 
-Also both apps use Supabase and it's authentication provider - which is awesome!
+Also both apps use Supabase and its authentication provider - which is awesome!
 
 In some cases you could consider frontend federation and just create a microfrontend, but there could be two counter-arguments:
 
-- the apps don't have anything to do with eachother
+- the apps don't have anything to do with each other
 - you don't have the capacity to maintain a complex architecture (e.g. private projects)
 
 So, you grab the best reverse proxy off the shelf, like Nginx - and slap a configuration and whahm - a reverse proxy.
@@ -50,15 +50,90 @@ But, after reading a bit more about how Nginx deals with reverse proxies and the
 Naturally, I increased the buffer. But the error kept returning (e.g. other cookies that were added by various tools we use).
 
 I knew about YARP since Microsoft published it back in 2021 and what they wanted to do with it but never got the possibility to use it in production.
-But here it was! It's time to shine!
+But here it was! YARP's time to shine!
+
+## YARP?
+
+[YARP](https://github.com/microsoft/reverse-proxy) stands short for _Yet Another Reverse Proxy_ and was build by Microsoft for internal projects, which needed a (reverse) proxy for their services.
+It is also very easy to use! Far easier than Nginx in Docker, if you ask me!
+You simply set up a basic ASP.NET Core project, add the YARP nuget and add the configuration, which can be done both using JSON or in-code.
 
 ## The project
 
-The project is realy simple blank Asp.Net App with a single `Program.cs`.
-I've installed the following additional package
-// Packages
-// code
+The project is really simple blank Asp.Net App with a single `Program.cs`.
+To get the proxy up and running, I added the following Nuget: `Yarp.ReverseProxy`.
+
+In this example I will show how to configure the proxy in code. But the [YARP documentation page](https://microsoft.github.io/reverse-proxy/articles/index.html), does realy explain very well how to configure it purely in JSON-config as well.
 
 ```cs
+using Yarp.ReverseProxy.Configuration;
 
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddReverseProxy()
+    .LoadFromMemory(new[]
+    {
+        new RouteConfig
+        {
+            RouteId = "app1_route",
+            ClusterId = "app1_cluster",
+            Match = new RouteMatch
+            {
+                Path = "/app1/{**catch-all}"
+            }
+        }
+
+        ,
+        new RouteConfig
+        {
+            RouteId = "app2_route",
+            ClusterId = "app2_cluster",
+            Match = new RouteMatch
+            {
+                Path = "/app2/{**catch-all}"
+            }
+        }
+    },
+    new[]
+    {
+        new ClusterConfig
+        {
+            ClusterId = "app1_cluster",
+            Destinations = new Dictionary<string, DestinationConfig>
+            {
+            {
+                    "destination1",
+                    new DestinationConfig {
+                        Address =  "http://localhost:4200"
+                    }
+                }
+            }
+        },
+        new ClusterConfig
+        {
+            ClusterId = "app2_cluster",
+            Destinations = new Dictionary<string, DestinationConfig>
+            {
+                {
+                    "destination1",
+                    new DestinationConfig {
+                        Address = "http://localhost:4201"
+                    }
+                }
+            }
+        }
+    });
+var app = builder.Build();
+app.MapReverseProxy();
+app.MapGet("/", () => Results.Redirect("/app2", permanent: true));
+
+app.Run();
 ```
+
+That's it! It does exactly the same as the nginx proxy, just doesnt have the pesky buffer errors.
+It is even better! You can include it in your Aspire (backend) project, include your service defaults, and it also traces proxy-requests in the aspire dashboard - perfectly to trace errors:
+![Aspire dashboard showing the traces](image.png)
+
+Well that's all that I got prepared for today! You can check all the related Source code at the GitHub Repository.
+
+Keep posted for more articles and... - Don't forget to C# too! 👋
