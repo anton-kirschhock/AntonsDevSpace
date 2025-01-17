@@ -1,27 +1,26 @@
 ---
 title: YARP - The perfect reverse proxy?
 description: Can it be? A perfect reverse proxy? Lets see!
-date: 2024-12-19T06:08:00Z
+date: 2024-12-18T08:26:12.907Z
 preview: ""
 draft: false
 tags:
-  - .Net
   - dotnet
   - C#
   - yarp
   - reverse proxy
-  - proxy
-  - nginx
   - Microsoft
   - Azure
-categories: []
+categories:
+  - DotNet
 slug: yarp-reverse-proxy
-keywords:
-  - Yarp
-  - C#
-  - Proxy
-  - CSS
+ShowToc: true
+cover:
+  image: cover.jpg
+  caption: How Bing AI thinks a Reverse proxy would look like - this is an AI-generated image
 ---
+
+# YARP - The perfect reverse proxy?
 
 ## The situation
 
@@ -134,6 +133,16 @@ That's it! It does exactly the same as the nginx proxy, just doesnt have the pes
 It is even better! You can include it in your Aspire (backend) project, include your service defaults, and it also traces proxy-requests in the aspire dashboard - perfectly to trace errors:
 ![Aspire dashboard showing the traces](image.png)
 
-Well that's all that I got prepared for today! You can check all the related Source code at the GitHub Repository.
+## lets summarize
+
+So is YARP the perfect reverse proxy? Depends on a couple of criterias:
+
+- Your DevOps team have no hard dependency on Nginx or another reverse proxy
+- Your Dev (and DevOps) team are familiar with C# and are not affraid of some code-action
+
+In general, A .Net hardend team which is searching to unify their solution to a more dotNet based stack can use YARP for sure!
+I think it is really a good choise together with Aspire and the concept of ServiceDefaults, to unify telemetry and logging. No more log-collectors to get the Nginx logs!
+
+Well that's all that I got prepared for today! You can check all the related Source code at the [GitHub Repository ](https://github.com/anton-kirschhock/yarp-a-quick-intro)I prepared for you guys.
 
 Keep posted for more articles and... - Don't forget to C# too! 👋

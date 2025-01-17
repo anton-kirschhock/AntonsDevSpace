@@ -2,8 +2,6 @@
 title:
 description: Do you C# Too?
 theme_version: 2.8.2
-cascade:
-  featured_image: /images/gohugo-default-sample-hero-image.jpg
 slug: anton-dev-space
 ---
 
